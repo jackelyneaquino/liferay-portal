@@ -12,4 +12,7 @@
 export enum RequestStatus {
 	DRAFT = 'Draft',
 	PENDING = 'Pending Marketing Review',
+	APPROVED = 'Approved',
+	REQUESTMOREINFO = 'Request More Info',
+	REJECT = "Reject"
 }
