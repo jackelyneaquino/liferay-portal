@@ -39,6 +39,7 @@ import com.liferay.commerce.product.model.CPOption;
 import com.liferay.commerce.product.model.CPOptionCategory;
 import com.liferay.commerce.product.model.CPSpecificationOption;
 import com.liferay.commerce.product.model.CPTaxCategory;
+import com.liferay.commerce.product.model.CommerceChannelRel;
 import com.liferay.commerce.product.service.CPDefinitionLocalService;
 import com.liferay.commerce.product.service.CPDefinitionOptionRelLocalService;
 import com.liferay.commerce.product.service.CPDefinitionOptionValueRelLocalService;
@@ -421,20 +422,32 @@ public class CPDefinitionsImporter {
 					externalReferenceCode, company.getCompanyId());
 
 		if (cpDefinition != null) {
+			CommerceChannelRel commerceChannelRel =
+				_commerceChannelRelLocalService.fetchCommerceChannelRel(
+					CPDefinition.class.getName(), cpDefinition.getCPDefinitionId(), commerceChannelId);
+
 			_addExpandoValue(
 				cpDefinition, jsonObject.getJSONArray("customFields"));
 
-			_commerceChannelRelLocalService.addCommerceChannelRel(
-				CPDefinition.class.getName(), cpDefinition.getCPDefinitionId(),
-				commerceChannelId, serviceContext);
+			if (commerceChannelRel == null){
+				_commerceChannelRelLocalService.addCommerceChannelRel(
+					CPDefinition.class.getName(), cpDefinition.getCPDefinitionId(),
+					commerceChannelId, serviceContext);
 
-			Indexer<CPDefinition> indexer =
-				IndexerRegistryUtil.nullSafeGetIndexer(CPDefinition.class);
+				Indexer<CPDefinition> indexer =
+					IndexerRegistryUtil.nullSafeGetIndexer(CPDefinition.class);
 
-			indexer.reindex(cpDefinition);
+				indexer.reindex(cpDefinition);
 
-			return cpDefinition;
+				return cpDefinition;
+			}
+
+			else {
+				return cpDefinition;
+			}
 		}
+
+
 
 		String name = jsonObject.getString("name");
 		String shortDescription = jsonObject.getString("shortDescription");
