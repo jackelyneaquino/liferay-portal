@@ -145,18 +145,18 @@ public class CommerceInventoryWarehousesImporter {
 
 		CommerceChannelRel commerceChannelRel =
 			_commerceChannelRelLocalService.fetchCommerceChannelRel(
-				CommerceInventoryWarehouse.class.getName(), commerceInventoryWarehouse.getCommerceInventoryWarehouseId(), commerceChannel.getCommerceChannelId());
+				CommerceInventoryWarehouse.class.getName(),
+				commerceInventoryWarehouse.getCommerceInventoryWarehouseId(),
+				commerceChannel.getCommerceChannelId());
 
-			if (commerceChannel != null  && commerceChannelRel == null){
-				_commerceChannelRelLocalService.addCommerceChannelRel(
-					CommerceInventoryWarehouse.class.getName(),
-					commerceInventoryWarehouse.getCommerceInventoryWarehouseId(),
-					commerceChannel.getCommerceChannelId(), serviceContext);
-			}
-
+		if ((commerceChannel != null) && (commerceChannelRel == null)) {
+			_commerceChannelRelLocalService.addCommerceChannelRel(
+				CommerceInventoryWarehouse.class.getName(),
+				commerceInventoryWarehouse.getCommerceInventoryWarehouseId(),
+				commerceChannel.getCommerceChannelId(), serviceContext);
+		}
 
 		return commerceInventoryWarehouse;
-
 	}
 
 	@Reference

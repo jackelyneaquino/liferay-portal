@@ -424,15 +424,17 @@ public class CPDefinitionsImporter {
 		if (cpDefinition != null) {
 			CommerceChannelRel commerceChannelRel =
 				_commerceChannelRelLocalService.fetchCommerceChannelRel(
-					CPDefinition.class.getName(), cpDefinition.getCPDefinitionId(), commerceChannelId);
+					CPDefinition.class.getName(),
+					cpDefinition.getCPDefinitionId(), commerceChannelId);
 
 			_addExpandoValue(
 				cpDefinition, jsonObject.getJSONArray("customFields"));
 
-			if (commerceChannelRel == null){
+			if (commerceChannelRel == null) {
 				_commerceChannelRelLocalService.addCommerceChannelRel(
-					CPDefinition.class.getName(), cpDefinition.getCPDefinitionId(),
-					commerceChannelId, serviceContext);
+					CPDefinition.class.getName(),
+					cpDefinition.getCPDefinitionId(), commerceChannelId,
+					serviceContext);
 
 				Indexer<CPDefinition> indexer =
 					IndexerRegistryUtil.nullSafeGetIndexer(CPDefinition.class);
@@ -442,12 +444,8 @@ public class CPDefinitionsImporter {
 				return cpDefinition;
 			}
 
-			else {
-				return cpDefinition;
-			}
+			return cpDefinition;
 		}
-
-
 
 		String name = jsonObject.getString("name");
 		String shortDescription = jsonObject.getString("shortDescription");
