@@ -49,7 +49,6 @@ public class CommerceChannelRelLocalServiceImpl
 			throw new DuplicateCommerceChannelRelException();
 		}
 
-
 		User user = _userLocalService.getUser(serviceContext.getUserId());
 
 		long commerceChannelRelId = counterLocalService.increment();

@@ -422,27 +422,24 @@ public class CPDefinitionsImporter {
 					externalReferenceCode, company.getCompanyId());
 
 		if (cpDefinition != null) {
+			_addExpandoValue(
+				cpDefinition, jsonObject.getJSONArray("customFields"));
+
 			CommerceChannelRel commerceChannelRel =
 				_commerceChannelRelLocalService.fetchCommerceChannelRel(
 					CPDefinition.class.getName(),
 					cpDefinition.getCPDefinitionId(), commerceChannelId);
-
-			_addExpandoValue(
-				cpDefinition, jsonObject.getJSONArray("customFields"));
 
 			if (commerceChannelRel == null) {
 				_commerceChannelRelLocalService.addCommerceChannelRel(
 					CPDefinition.class.getName(),
 					cpDefinition.getCPDefinitionId(), commerceChannelId,
 					serviceContext);
-
-				Indexer<CPDefinition> indexer =
-					IndexerRegistryUtil.nullSafeGetIndexer(CPDefinition.class);
-
-				indexer.reindex(cpDefinition);
-
-				return cpDefinition;
 			}
+
+			Indexer<CPDefinition> indexer =
+				IndexerRegistryUtil.nullSafeGetIndexer(CPDefinition.class);
+				indexer.reindex(cpDefinition);
 
 			return cpDefinition;
 		}

@@ -22,7 +22,6 @@ import com.liferay.portal.kernel.exception.PortalException;
 public class DuplicateCommerceChannelRelException extends PortalException {
 
 	public DuplicateCommerceChannelRelException() {
-
 	}
 
 	public DuplicateCommerceChannelRelException(String msg) {

@@ -429,7 +429,7 @@ public class ServiceContext implements Cloneable, Serializable {
 	 *
 	 * @return the language ID
 	 */
-	public long getLanguageId() {
+	public String getLanguageId() {
 		if (_languageId != null) {
 			return _languageId;
 		}
@@ -1581,6 +1581,4 @@ public class ServiceContext implements Cloneable, Serializable {
 	private long _userId;
 	private String _uuid;
 	private int _workflowAction = WorkflowConstants.ACTION_PUBLISH;
-
-
 }
