@@ -23,7 +23,6 @@ public class DuplicateCommerceChannelRelException extends PortalException {
 
 	public DuplicateCommerceChannelRelException() {
 	}
-
 	public DuplicateCommerceChannelRelException(String msg) {
 		super(msg);
 	}
