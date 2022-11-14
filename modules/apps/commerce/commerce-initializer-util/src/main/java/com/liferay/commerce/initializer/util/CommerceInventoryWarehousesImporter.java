@@ -142,7 +142,13 @@ public class CommerceInventoryWarehousesImporter {
 			_commerceChannelLocalService.fetchCommerceChannelBySiteGroupId(
 				serviceContext.getScopeGroupId());
 
-		if (commerceChannel != null) {
+		CommerceChannelRel commerceChannelRel =
+			_commerceChannelRelLocalService.fetchCommerceChannelRel(
+				CommerceInventoryWarehouse.class.getName(),
+				commerceInventoryWarehouse.getCommerceInventoryWarehouseId(),
+				commerceChannel.getCommerceChannelId());
+
+		if ((commerceChannel != null) && (commerceChannelRel == null)) {
 			_commerceChannelRelLocalService.addCommerceChannelRel(
 				CommerceInventoryWarehouse.class.getName(),
 				commerceInventoryWarehouse.getCommerceInventoryWarehouseId(),
