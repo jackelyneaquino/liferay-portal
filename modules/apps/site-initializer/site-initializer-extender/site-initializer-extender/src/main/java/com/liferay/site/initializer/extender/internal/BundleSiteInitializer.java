@@ -507,6 +507,7 @@ public class BundleSiteInitializer implements SiteInitializer {
 
 			Map<String, Layout> layouts = _invoke(
 				() -> _addOrUpdateLayouts(serviceContext));
+				
 			// TODO Review order/dependency
 
 			Map<String, String> clientExtensionEntryIdsStringUtilReplaceValues =
