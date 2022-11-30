@@ -472,9 +472,6 @@ public class BundleSiteInitializer implements SiteInitializer {
 					documentsStringUtilReplaceValues, serviceContext,
 					siteNavigationMenuItemSettingsBuilder));
 
-			Map<String, Layout> layouts = _invoke(
-				() -> _addOrUpdateLayouts(serviceContext));
-
 			Map<String, String> listTypeDefinitionIdsStringUtilReplaceValues =
 				_invoke(() -> _addOrUpdateListTypeDefinitions(serviceContext));
 
@@ -508,6 +505,9 @@ public class BundleSiteInitializer implements SiteInitializer {
 				() -> _addPermissions(
 					objectDefinitionIdsAndObjectEntryIdsStringUtilReplaceValues,
 					serviceContext));
+
+			Map<String, Layout> layouts = _invoke(
+				() -> _addOrUpdateLayouts(serviceContext));
 
 			// TODO Review order/dependency
 
