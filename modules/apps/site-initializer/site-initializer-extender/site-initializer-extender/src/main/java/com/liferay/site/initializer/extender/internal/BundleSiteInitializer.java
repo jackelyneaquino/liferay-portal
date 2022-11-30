@@ -471,7 +471,7 @@ public class BundleSiteInitializer implements SiteInitializer {
 					_ddmStructureLocalService, _ddmTemplateLocalService,
 					documentsStringUtilReplaceValues, serviceContext,
 					siteNavigationMenuItemSettingsBuilder));
-			
+
 			Map<String, String> listTypeDefinitionIdsStringUtilReplaceValues =
 				_invoke(() -> _addOrUpdateListTypeDefinitions(serviceContext));
 
