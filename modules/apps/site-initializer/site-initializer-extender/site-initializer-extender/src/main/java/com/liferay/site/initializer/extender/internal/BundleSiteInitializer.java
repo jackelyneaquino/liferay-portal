@@ -504,6 +504,7 @@ public class BundleSiteInitializer implements SiteInitializer {
 				() -> _addPermissions(
 					objectDefinitionIdsAndObjectEntryIdsStringUtilReplaceValues,
 					serviceContext));
+
 			Map<String, Layout> layouts = _invoke(
 				() -> _addOrUpdateLayouts(serviceContext));
 			// TODO Review order/dependency
