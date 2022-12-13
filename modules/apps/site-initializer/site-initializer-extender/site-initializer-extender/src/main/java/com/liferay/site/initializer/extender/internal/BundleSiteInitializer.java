@@ -485,11 +485,6 @@ public class BundleSiteInitializer implements SiteInitializer {
 							siteNavigationMenuItemSettingsBuilder));
 
 			_invoke(
-				() -> _addCPDefinitions(
-					documentsStringUtilReplaceValues,
-					objectDefinitionIdsAndObjectEntryIdsStringUtilReplaceValues,
-					serviceContext));
-			_invoke(
 				() -> _addLayoutPageTemplates(
 					assetListEntryIdsStringUtilReplaceValues,
 					documentsStringUtilReplaceValues,
@@ -508,6 +503,12 @@ public class BundleSiteInitializer implements SiteInitializer {
 
 			Map<String, Layout> layouts = _invoke(
 				() -> _addOrUpdateLayouts(serviceContext));
+
+			_invoke(
+				() -> _addCPDefinitions(
+					documentsStringUtilReplaceValues,
+					objectDefinitionIdsAndObjectEntryIdsStringUtilReplaceValues,
+					serviceContext));
 
 			// TODO Review order/dependency
 
