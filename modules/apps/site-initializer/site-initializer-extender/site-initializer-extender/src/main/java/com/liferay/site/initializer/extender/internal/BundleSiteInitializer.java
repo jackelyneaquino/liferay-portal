@@ -1052,6 +1052,7 @@ public class BundleSiteInitializer implements SiteInitializer {
 				taxonomyCategoryIdsStringUtilReplaceValues);
 		}
 
+		_deleteSiteNavigationMenus(serviceContext);
 		_addSiteNavigationMenus(serviceContext, siteNavigationMenuItemSettings);
 	}
 
@@ -4147,6 +4148,13 @@ public class BundleSiteInitializer implements SiteInitializer {
 					accountBriefsJSONObject.getString("externalReferenceCode"),
 					accountRole.getId(), emailAddress);
 		}
+	}
+
+	private void _deleteSiteNavigationMenus(ServiceContext serviceContext)
+		throws Exception {
+
+		_siteNavigationMenuLocalService.deleteSiteNavigationMenus(
+			serviceContext.getScopeGroupId());
 	}
 
 	private long[] _getAssetCategoryIds(
